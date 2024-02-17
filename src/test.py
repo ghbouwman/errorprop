@@ -1,15 +1,15 @@
 import errorprop as ep
 
-# Example usage:
-pi = ep.ErrorProp(3.14)
-r = ep.ErrorProp(420, 69)
+pi = ep.ErrorProp(3.1415, 0.0001)
+r = ep.ErrorProp(1, .1)
+a = r*2
 
-print(r.value, r.error)
-print(r)
+square_area = a*a
+circle_area = pi * r*r
+cutout_area = square_area - circle_area
 
-x = r + r
+print(cutout_area)
 
-print(x.value, x.error)
-print(x)
+
 
 
