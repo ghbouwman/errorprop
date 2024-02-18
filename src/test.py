@@ -1,15 +1,17 @@
 import errorprop as ep
+from numpy import pi
 
-pi = ep.ErrorProp(3.1415, 0.0001)
-r = ep.ErrorProp(1, .1)
-a = r*2
+r = ep.ErrorProp(1, 0.01)
+d = 2*r
 
-square_area = a*a
-circle_area = pi * r*r
-cutout_area = square_area - circle_area
+circle_area = pi * r**2
+square_area = d**2
+wrong_cutout_area = circle_area - square_area 
+cutout_area = abs(wrong_cutout_area)
 
+print(r)
+print(d)
+print(circle_area)
+print(square_area)
+print(wrong_cutout_area)
 print(cutout_area)
-
-
-
-

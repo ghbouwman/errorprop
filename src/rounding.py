@@ -4,7 +4,7 @@ def significant_digit(value):
     
     for char in str(value):
         
-        if char not in "0.":
+        if char not in "+-0.":
             return int(char)
 
 def error_significant_digit(error):
@@ -13,6 +13,8 @@ def error_significant_digit(error):
     
     # Check if the number is exact, since that does require rounding up.
     non_zero_digits = str(error)\
+                      .replace('+', '')\
+                      .replace('-', '')\
                       .replace('0', '')\
                       .replace('.', '')
                         
@@ -25,18 +27,15 @@ def error_significant_digit(error):
 
     return digit
 
+def magnitude(value):
+
+    return np.floor(np.log10(np.abs(value)))
 
 def round_error(error):
     """
 
     """
     error_str = str(error)
-
-
-    for char in error_str:
-        if char not in "0.":
-            significant_digit = int(char)
-            break
 
     exact = len(error_str.replace('0', '').replace('.', '')) <= 1
 
